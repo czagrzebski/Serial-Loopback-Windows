@@ -346,7 +346,7 @@ class AboutDialog(QDialog):
 
         # gotta plug my github lol
         github_url = "https://github.com/czagrzebski"  
-        self.aboutLabel = QLabel(f"Serial Loopback for Windows<br>Version 1.0<br><br>" +
+        self.aboutLabel = QLabel(f"Serial Loopback for Windows<br>Version 1.0.2<br><br>" +
                                  "This application provides a loopback interface for serial devices on Windows Machines.<br><br>" +
                                  "Developed by Creed Zagrzebski.<br><br>" +
                                  "Licensed under the MIT License.<br><br>" +
@@ -382,6 +382,10 @@ def loadSettings():
 
 
 if __name__ == '__main__':
+    print("========================================")
+    print("USB Serial Port Loopback for Windows")
+    print("By Creed Zagrzebski")
+    print("========================================")
     loadSettings()
     app = QApplication(sys.argv)
     mainWindow = MainWindow()
