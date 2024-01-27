@@ -30,7 +30,7 @@ Ensure you have the following installed:
    ```
 
 ### Installation (Method 2)
-1. Download x86 or x64 executable from the [releases]() page.
+1. Download x86 or x64 executable from the [releases](https://github.com/czagrzebski/Serial-Loopback-Windows/releases) page.
 2. Run the executable.
 
 ## Usage
