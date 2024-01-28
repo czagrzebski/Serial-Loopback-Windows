@@ -26,7 +26,8 @@ Ensure you have the following installed:
 1. **Clone the repository or download the source code.**
    ```bash
    git clone https://github.com/czagrzebski/Serial-Loopback-Windows.git
-   cd usb-serial-port-loopback
+   cd Serial-Loopback-Windows
+   ```
 2. **Install the required packages.**
    ```bash
    pip install -r requirements.txt
