@@ -56,9 +56,13 @@ class SerialReadThread(threading.Thread):
     def run(self):
         try:
             while self.serial_device.serial_connection.is_open:
-                if self.serial_device.serial_connection.in_waiting > 0:
-                    data = self.serial_device.serial_connection.read(self.serial_device.serial_connection.in_waiting).decode('utf-8', errors='ignore')
+                # this is more efficient than busy waiting, significantly reduces CPU usage
+                data = self.serial_device.serial_connection.read(self.serial_device.serial_connection.in_waiting).decode('utf-8', errors='ignore')
+                if data:  # If any data is received
                     self.serial_device.serial_connection.write(data.encode('utf-8'))
+                else:
+                    # You can add a small sleep here to yield the CPU if you have a very short timeout and no data situation is common
+                    time.sleep(0.1)
         except serial.SerialException as e:
             print(f"Serial exception on {self.serial_device.com_port}: {e}")
         finally:
@@ -135,7 +139,7 @@ class DeviceMonitorThread(QThread):
                 vid, pid = vid_pid.split(':')
                 try:
                     print(f"Opening new serial connection to {desc[2]} ({desc[1]})")
-                    ser = serial.Serial(com_port, BAUD_RATE, parity=PARITY, timeout=0.1)
+                    ser = serial.Serial(com_port, BAUD_RATE, parity=PARITY, timeout=0.05)
                     new_device = SerialDevice(com_port, vid, pid, ser)
                     self.serial_devices.append(new_device)
                     t = SerialReadThread(self.serial_devices, new_device, self.device_disconnected_signal)
@@ -346,7 +350,7 @@ class AboutDialog(QDialog):
 
         # gotta plug my github lol
         github_url = "https://github.com/czagrzebski"  
-        self.aboutLabel = QLabel(f"Serial Loopback for Windows<br>Version 1.0.2<br><br>" +
+        self.aboutLabel = QLabel(f"Serial Loopback for Windows<br>Version 1.0.3<br><br>" +
                                  "This application provides a loopback interface for serial devices on Windows Machines.<br><br>" +
                                  "Developed by Creed Zagrzebski.<br><br>" +
                                  "Licensed under the MIT License.<br><br>" +
