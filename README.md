@@ -1,10 +1,10 @@
 <div align="center">
- <h3>USB Serial Port Loopback for Windows </h3>
+ <h3>Serial Port Loopback for Windows </h3>
  <img src="logo.png" width="20%">
 </div>
 
 ## Introduction
-The USB Serial Port Loopback application is designed for Windows and provides an automated interface for USB serial devices. It continuously monitors USB ports for any connection or disconnection events. When a supported USB serial device is connected, the application automatically establishes a serial connection, creating a loopback interface where any data received on the serial port is sent back to the device. This can be particularly useful for testing serial communication or for debugging purposes.
+The Serial Port Loopback application is designed for Windows and provides an automated interface for serial devices. It continuously monitors USB ports for any connection or disconnection events. When a supported serial device is connected, the application automatically establishes a serial connection, creating a loopback interface where any data received on the serial port is sent back to the device. This can be particularly useful for testing serial communication or for debugging purposes.
 
 ## Features
 - **Auto-detection of Device Connection/Disconnection**: Leverages Windows Management Instrumentation (WMI) to detect when a USB device is plugged in or unplugged.
