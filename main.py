@@ -57,9 +57,9 @@ class SerialReadThread(threading.Thread):
         try:
             while self.serial_device.serial_connection.is_open:
                 # this is more efficient than busy waiting, significantly reduces CPU usage
-                data = self.serial_device.serial_connection.read(self.serial_device.serial_connection.in_waiting).decode('utf-8', errors='ignore')
+                data = self.serial_device.serial_connection.read(self.serial_device.serial_connection.in_waiting).decode()
                 if data:  # If any data is received
-                    self.serial_device.serial_connection.write(data.encode('utf-8'))
+                    self.serial_device.serial_connection.write(data)
         except serial.SerialException as e:
             print(f"Serial exception on {self.serial_device.com_port}: {e}")
         finally:
