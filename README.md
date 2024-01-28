@@ -25,7 +25,7 @@ Ensure you have the following installed:
 ### Installation (Method 1)
 1. **Clone the repository or download the source code.**
    ```bash
-   git clone https://github.com/czagrzebski/usb-serial-port-loopback.git
+   git clone https://github.com/czagrzebski/Serial-Loopback-Windows.git
    cd usb-serial-port-loopback
 2. **Install the required packages.**
    ```bash
